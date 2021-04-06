@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+	<title>Sheridan Family Tree</title>
+	<link rel="stylesheet" href="main.css" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+	<script type="text/javascript" src="bower_components/crypto-js/crypto-js.js"></script>
+</head>
+
+<body>
+	<div class="tree">
+		<ul id="master-list" class="master-list"></ul>
+		<h1 class="quote">I am the vine; you are the branches. If you remain in me and I in you, you will bear much fruit.
+		</h1>
+		<h1 class="quote">John 15:5</h1>
+		<div id="nextBday">
+
+		</div>
+	</div>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span id="close-modal" class="close">&times;</span>
+			<br>
+			<p><b>Nickname:</b></p>
+			<p id="modal-nick-name"></p>
+			<p><b>Full Name:</b></p>
+			<p id="modal-full-name"></p>
+			<p><b>Born:</b></p>
+			<p id="modal-birthday"></p>
+			<p id="modal-died-label"><b>Deceased:</b></p>
+			<p id="modal-deathday"></p>
+		</div>
+
+	</div>
+	<div id="loginModal" class="loginModal">
+		<div class="main">
+			<form id="form">
+				<h1 class="loginH">Log In</h1>
+				<input type="password" id="inputPassword" class="form-control bg-secondary text-white" placeholder="Password"
+					required>
+				<p id="loginError" hidden>Incorrect</p>
+				<input type="submit">
+			</form>
+		</div>
+	</div>
+	<script type="module" src="index.js"></script>
+</body>
+
+</html>

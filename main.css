@@ -486,6 +486,7 @@ input[type=password], select {
   width: 300px;
   padding: 12px 20px;
   margin: 8px auto;
+  font-size: 16px;
   display: block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -495,7 +496,9 @@ input[type=password], select {
 input[type=submit] {
   width: 300px;
   background-color: #4CAF50;
-	text-align: center;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   color: white;
   padding: 14px 20px;
   margin: 8px auto;

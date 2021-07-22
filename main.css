@@ -271,10 +271,27 @@ right connector from last child*/
 
 
 
-.mate-list-item:first-child::before,
-.mate-list-item:last-child::before,
-.mate-list-item:first-child > .mate-list > .mate-item:first-child::before,
-.mate-list-item:last-child > .mate-list > .mate-item::before,
+.mate-list-item:first-child::before {
+	border: 0 none;
+}
+.mate-list-item:last-child::before {
+	border: 0 none;
+
+}
+.mate-list-item:first-child > .mate-list > .mate-item:first-child::before {
+	border: 0 none;
+
+}
+.mate-list-item:last-child > .mate-list > .mate-item::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: calc(50% + 100px);
+	border-top: 1px solid #ccc;
+	width: 50%;
+	height: 43px;
+	z-index: -1;
+}
 .mate-list-item:last-child::after {
 	border: 0 none;
 }
@@ -496,8 +513,8 @@ input[type=password], select {
 input[type=submit] {
   width: 300px;
   background-color: #4CAF50;
-  text-align: center;
-  -webkit-appearance: none;
+	text-align: center;
+	-webkit-appearance: none;
   -moz-appearance: none;
   color: white;
   padding: 14px 20px;

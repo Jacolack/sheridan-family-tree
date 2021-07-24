@@ -253,18 +253,18 @@ request.onload = () => {
 request.open("get", "cipher.txt", true);
 request.send();
 
+if (development) {
+    var request2 = new XMLHttpRequest();
 
-var request2 = new XMLHttpRequest();
-
-request2.onload = () => {
-    familystr = request2.response
-    if (development) {
+    request2.onload = () => {
+        familystr = request2.response
         loginModal.hidden = true
         logSubmit()
-    }
-};
-request2.open("get", "family.json", true);
-request2.send();
+
+    };
+    request2.open("get", "family.json", true);
+    request2.send();
+}
 
 
 

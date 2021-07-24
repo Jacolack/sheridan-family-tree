@@ -200,7 +200,7 @@ request.onload = () => {
     ciphertext = request.response
     form.hidden = false
 };
-request.open("get", "cipher.txt", true);
+request.open("get", "/cipher.txt", true);
 request.send();
 
 

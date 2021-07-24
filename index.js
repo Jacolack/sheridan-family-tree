@@ -226,7 +226,7 @@ function logSubmit(event) {
             console.log(ciphertext)
             console.log(passField.value)
             var bytes = CryptoJS.AES.decrypt(ciphertext, passField.value);
-            const familyJson = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            familyJson = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
         } else {
             familyJson = JSON.parse(familystr);
         }

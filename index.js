@@ -10,7 +10,7 @@ const form = document.getElementById('form');
 const passField = document.getElementById('inputPassword');
 const loginModal = document.getElementById('loginModal');
 const loginError = document.getElementById('loginError');
-
+const development = false;
 var nextBdayRecord = null
 var nextBdayList = []
 
@@ -219,7 +219,7 @@ var familystr = ""
 var familyJson = {}
 function logSubmit(event) {
     try {
-        if (false) {
+        if (!development) {
             event.preventDefault();
 
             console.log("wtf")
@@ -258,7 +258,7 @@ var request2 = new XMLHttpRequest();
 
 request2.onload = () => {
     familystr = request2.response
-    if (true) {
+    if (development) {
         loginModal.hidden = true
         logSubmit()
     }

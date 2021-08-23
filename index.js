@@ -11,12 +11,10 @@ const form = document.getElementById('form');
 const passField = document.getElementById('inputPassword');
 const loginModal = document.getElementById('loginModal');
 const loginError = document.getElementById('loginError');
-const development = false;
 var nextBdayRecord = null
 var nextBdayList = []
 
 function checkQuestion(person) {
-    console.log(person)
     return person.birthday.includes('?') || person.fullname.includes('?')
 }
 
@@ -217,21 +215,16 @@ function fixProblem1Vert() {
 
 
 var ciphertext = ""
-var familystr = ""
-var familyJson = {}
 function logSubmit(event) {
     try {
-        if (!development) {
-            event.preventDefault();
-            var bytes = CryptoJS.AES.decrypt(ciphertext, passField.value);
-            familyJson = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        } else {
-            familyJson = JSON.parse(familystr);
-        }
+        event.preventDefault();
+        var bytes = CryptoJS.AES.decrypt(ciphertext, passField.value);
+        var familyJson = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
         const params = new URLSearchParams(window.location.search);
 
         const startFrom = params.get("startFrom");
+        console.log(startFrom)
         if (startFrom) {
             printMates(familyJson, startFrom, masterList)
         } else {
@@ -258,21 +251,6 @@ request.onload = () => {
 };
 request.open("get", "cipher.txt", true);
 request.send();
-
-if (development) {
-    var request2 = new XMLHttpRequest();
-
-    request2.onload = () => {
-        familystr = request2.response
-        loginModal.hidden = true
-        logSubmit()
-
-    };
-    request2.open("get", "family.json", true);
-    request2.send();
-}
-
-
 
 
 // When the user clicks on <span> (x), close the modal
@@ -306,7 +284,9 @@ function showModal(personObj, personId) {
         modalDeathday.innerText = ""
     }
 
-    modalStartFromLink.href = '?startFrom=' + personId
+    console.log(modalStartFromLink)
+    console.log(personId)
+    modalStartFromLink.href = '/?startFrom=' + personId
     modal.style.display = "block";
 }
 

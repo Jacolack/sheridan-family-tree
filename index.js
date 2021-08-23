@@ -15,6 +15,7 @@ var nextBdayRecord = null
 var nextBdayList = []
 
 function checkQuestion(person) {
+    console.log(person)
     return person.birthday.includes('?') || person.fullname.includes('?')
 }
 
@@ -221,10 +222,6 @@ function logSubmit(event) {
     try {
         if (!development) {
             event.preventDefault();
-
-            console.log("wtf")
-            console.log(ciphertext)
-            console.log(passField.value)
             var bytes = CryptoJS.AES.decrypt(ciphertext, passField.value);
             familyJson = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
         } else {
@@ -283,6 +280,7 @@ window.onclick = function (event) {
 
 
 function showModal(personObj) {
+    console.log(personObj)
     modalNickName.innerText = personObj.nickname
     modalFullName.innerText = personObj.fullname
     if (personObj.birthday.includes('?')) {

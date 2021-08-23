@@ -6,6 +6,7 @@ var modalFullName = document.getElementById("modal-full-name");
 var modalBirthday = document.getElementById("modal-birthday");
 var modalDiedLabel = document.getElementById("modal-died-label");
 var modalDeathday = document.getElementById("modal-deathday");
+const modalStartFromLink = document.getElementById("start-from-link")
 const form = document.getElementById('form');
 const passField = document.getElementById('inputPassword');
 const loginModal = document.getElementById('loginModal');
@@ -71,7 +72,7 @@ function printChildren(family, personId, mateId, childList) {
                     childLink.innerText = child.nickname
                 }
                 childLink.onclick = () => {
-                    showModal(child)
+                    showModal(child, element)
                 }
                 childItem.appendChild(childLink)
             } else {
@@ -118,7 +119,7 @@ function printMates(family, personId, mateList) {
                 bloodMate.innerText = person.nickname
             }
             bloodMate.onclick = () => {
-                showModal(person)
+                showModal(person, personId)
             }
             bloodMateHolder.appendChild(bloodMate)
         }
@@ -143,7 +144,7 @@ function printMates(family, personId, mateList) {
         }
 
         mate.onclick = () => {
-            showModal(mateObj)
+            showModal(mateObj, element)
         }
         mateHolder.appendChild(mate)
 
@@ -227,7 +228,15 @@ function logSubmit(event) {
         } else {
             familyJson = JSON.parse(familystr);
         }
-        printMates(familyJson, '0', masterList)
+
+        const params = new URLSearchParams(window.location.search);
+
+        const startFrom = params.get("startFrom");
+        if (startFrom) {
+            printMates(familyJson, startFrom, masterList)
+        } else {
+            printMates(familyJson, '0', masterList)
+        }
         fixProblem1Vert()
         buildNextBday()
         loginModal.hidden = true
@@ -279,8 +288,7 @@ window.onclick = function (event) {
 }
 
 
-function showModal(personObj) {
-    console.log(personObj)
+function showModal(personObj, personId) {
     modalNickName.innerText = personObj.nickname
     modalFullName.innerText = personObj.fullname
     if (personObj.birthday.includes('?')) {
@@ -297,6 +305,8 @@ function showModal(personObj) {
         modalDiedLabel.style.display = "none";
         modalDeathday.innerText = ""
     }
+
+    modalStartFromLink.href = '?startFrom=' + personId
     modal.style.display = "block";
 }
 

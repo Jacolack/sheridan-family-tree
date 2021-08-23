@@ -286,7 +286,13 @@ function showModal(personObj, personId) {
 
     console.log(modalStartFromLink)
     console.log(personId)
-    modalStartFromLink.href = '/?startFrom=' + personId
+    if (personId.mates.length != 0) {
+        modalStartFromLink.href = '/?startFrom=' + personId
+        modalStartFromLink.style.display = "block"
+    } else {
+        modalStartFromLink.style.display = "none"
+        modalStartFromLink.href = ""
+    }
     modal.style.display = "block";
 }
 

@@ -10,6 +10,12 @@ html  {
 
 
 /* TREE APPEARANCE */
+.tree {
+	display: table;
+	margin: 0px;
+	float: none;
+}
+
 .master-list {
 	white-space:nowrap;
 	padding: 20px;
